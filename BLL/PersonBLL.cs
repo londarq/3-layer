@@ -60,16 +60,15 @@ namespace BLL
             _DAL.DeletePerson(id);
         }
 
-        public void PutPerson(int id)
+        public void PutPerson(PersonModel personModel)
         {
-            var personEntity = _DAL.GetPersonById(id);
-
-            if (personEntity == null)
+            if (_DAL.GetPersonById(personModel.Id) == null)
             {
                 throw new Exception("Invalid ID");
             }
 
-            _DAL.PutPerson(id);
+            Person personEntity = _PersonMapper.Map<PersonModel, Person>(personModel);
+            _DAL.PutPerson(personEntity);
         }
     }
 }

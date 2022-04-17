@@ -42,13 +42,9 @@ namespace DAL
             db.SaveChanges();
         }
 
-        public void PutPerson(int id)
+        public void PutPerson(Person person)
         {
             var db = new PersonDbContext();
-            Person person = new Person();
-
-            person = db.Person.FirstOrDefault(x => x.Id == id);
-
             db.Update(person);
             db.SaveChanges();
         }

@@ -56,9 +56,10 @@ namespace PersonAPI.Controllers
         // PUT: api/Person/5
         [HttpPut]
         [Route("put")]
-        public void PutPerson(int id)
+        public void PutPerson(int id, [FromBody] PersonModel personModel)
         {
-            _BLL.PutPerson(id);
+            personModel.Id = id;
+            _BLL.PutPerson(personModel);
         }
     }
 }
